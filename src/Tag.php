@@ -8,7 +8,7 @@ namespace SergeLiatko\HTML;
  *
  * @package SergeLiatko\HTML
  */
-class Tag {
+class Tag implements TagInterface {
 
 	/**
 	 * @var string $tag HTML tag name
