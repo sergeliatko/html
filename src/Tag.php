@@ -66,22 +66,12 @@ class Tag implements TagInterface {
 	 * @param string                           $tag
 	 * @param bool                             $self_closing
 	 *
-	 * @return \SergeLiatko\HTML\Tag
-	 */
-	public static function getInstance( $attributes = array(), $content = array(), $tag = '', $self_closing = false ) {
-		return new self( $attributes, $content, $tag, $self_closing );
-	}
-
-	/**
-	 * @param array                            $attributes
-	 * @param string[]|\SergeLiatko\HTML\Tag[] $content
-	 * @param string                           $tag
-	 * @param bool                             $self_closing
-	 *
 	 * @return string
 	 */
 	public static function HTML( $attributes = array(), $content = array(), $tag = '', $self_closing = false ) {
-		return self::getInstance( $attributes, $content, $tag, $self_closing )->toHTML();
+		$instance = new self( $attributes, $content, $tag, $self_closing );
+
+		return $instance->toHTML();
 	}
 
 	/**

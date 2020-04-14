@@ -9,6 +9,7 @@ namespace SergeLiatko\HTML;
  * @package SergeLiatko\HTML
  */
 interface TagInterface {
+
 	/**
 	 * @param array                            $attributes
 	 * @param string[]|\SergeLiatko\HTML\Tag[] $content
