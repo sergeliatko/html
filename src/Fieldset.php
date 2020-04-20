@@ -3,6 +3,8 @@
 
 namespace SergeLiatko\HTML;
 
+use SergeLiatko\HTML\Traits\HTMLTrait;
+
 /**
  * Class Fieldset
  *
@@ -10,20 +12,7 @@ namespace SergeLiatko\HTML;
  */
 class Fieldset extends Tag {
 
-	/**
-	 * @param array  $attributes
-	 * @param array  $content
-	 * @param string $tag
-	 * @param bool   $self_closing
-	 *
-	 * @return string
-	 */
-	public static function HTML( $attributes = array(), $content = array(), $tag = '', $self_closing = false ) {
-		$instance = new self( $attributes, $content );
-
-		return $instance->toHTML();
-	}
-
+	use HTMLTrait;
 
 	/**
 	 * Fieldset constructor.

@@ -1,12 +1,12 @@
 <?php
 
-namespace SergeLiatko\HTML;
+namespace SergeLiatko\HTML\Interfaces;
 
 
 /**
- * Class Tag
+ * Interface TagInterface
  *
- * @package SergeLiatko\HTML
+ * @package SergeLiatko\HTML\Interfaces
  */
 interface TagInterface {
 

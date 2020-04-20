@@ -3,12 +3,17 @@
 
 namespace SergeLiatko\HTML;
 
+use SergeLiatko\HTML\Interfaces\TagInterface;
+use SergeLiatko\HTML\Traits\HTMLTrait;
+
 /**
  * Class Tag
  *
  * @package SergeLiatko\HTML
  */
 class Tag implements TagInterface {
+
+	use HTMLTrait;
 
 	/**
 	 * @var string $tag HTML tag name
@@ -58,20 +63,6 @@ class Tag implements TagInterface {
 	 */
 	public function __toString() {
 		return $this->toHTML();
-	}
-
-	/**
-	 * @param array                            $attributes
-	 * @param string[]|\SergeLiatko\HTML\Tag[] $content
-	 * @param string                           $tag
-	 * @param bool                             $self_closing
-	 *
-	 * @return string
-	 */
-	public static function HTML( $attributes = array(), $content = array(), $tag = '', $self_closing = false ) {
-		$instance = new self( $attributes, $content, $tag, $self_closing );
-
-		return $instance->toHTML();
 	}
 
 	/**
