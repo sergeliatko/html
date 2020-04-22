@@ -1,2 +1,2 @@
-# html
-PHP HTML builder for WordPress projects.
+# HTML
+HTML tag builder for WordPress projects.
