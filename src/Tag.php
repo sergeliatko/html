@@ -38,10 +38,10 @@ class Tag implements TagInterface {
 	/**
 	 * Tag constructor.
 	 *
-	 * @param array                            $attributes
-	 * @param string[]|\SergeLiatko\HTML\Tag[] $content
-	 * @param string                           $tag
-	 * @param bool                             $self_closing
+	 * @param array                                   $attributes
+	 * @param string|string[]|\SergeLiatko\HTML\Tag[] $content
+	 * @param string                                  $tag
+	 * @param bool                                    $self_closing
 	 */
 	public function __construct( $attributes = array(), $content = array(), $tag = '', $self_closing = false ) {
 		//set tag
@@ -180,11 +180,11 @@ class Tag implements TagInterface {
 	 * @return Tag
 	 */
 	public function setContent( $content ) {
-		if ( ! is_array( $content ) ) {
+		if ( !is_array( $content ) ) {
 			$content = array( $content );
 		}
 		$this->content = array_filter( $content, function ( $item ) {
-			return ! ! ( is_string( $item ) || ( $item instanceof Tag ) );
+			return ! !( is_string( $item ) || ( $item instanceof Tag ) );
 		} );
 
 		return $this;
@@ -203,7 +203,7 @@ class Tag implements TagInterface {
 	 * @return Tag
 	 */
 	public function setSelfClosing( $self_closing ) {
-		$this->self_closing = ! empty( $self_closing );
+		$this->self_closing = !empty( $self_closing );
 
 		return $this;
 	}
