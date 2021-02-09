@@ -21,7 +21,7 @@ class Textarea extends Tag {
 	 * @param \SergeLiatko\HTML\Tag[]|string[] $content
 	 */
 	public function __construct( $attributes = array(), $content = array() ) {
-		parent::__construct( $attributes, $content, 'textarea', false );
+		parent::__construct( $attributes, esc_textarea( $content ), 'textarea', false );
 	}
 
 }
