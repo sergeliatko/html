@@ -21,7 +21,6 @@ trait HTMLTrait {
 	public static function HTML( $attributes = array(), $content = array(), $tag = '', $self_closing = false ) {
 		$instance = new self( $attributes, $content, $tag, $self_closing );
 
-		/** @noinspection PhpUndefinedMethodInspection */
 		return $instance->toHTML();
 	}
 }
