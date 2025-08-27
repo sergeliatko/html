@@ -17,11 +17,11 @@ class Section extends Tag {
 	/**
 	 * Section constructor.
 	 *
-	 * @param array                            $attributes
-	 * @param \SergeLiatko\HTML\Tag[]|string[] $content
+	 * @param array $attributes
+	 * @param string|Tag[]|string[] $content
 	 */
-	public function __construct( $attributes = array(), $content = array() ) {
-		parent::__construct( $attributes, $content, 'section', false );
+	public function __construct( array $attributes = array(), $content = array() ) {
+		parent::__construct( $attributes, $content, 'section' );
 	}
 
 }

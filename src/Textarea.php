@@ -17,11 +17,11 @@ class Textarea extends Tag {
 	/**
 	 * Textarea constructor.
 	 *
-	 * @param array                            $attributes
-	 * @param \SergeLiatko\HTML\Tag[]|string[] $content
+	 * @param array $attributes
+	 * @param string|Tag[]|string[] $content
 	 */
-	public function __construct( $attributes = array(), $content = array() ) {
-		if ( !is_array( $content ) ) {
+	public function __construct( array $attributes = array(), $content = array() ) {
+		if ( ! is_array( $content ) ) {
 			$content = array( $content );
 		}
 		$content = array_filter(
@@ -32,7 +32,7 @@ class Textarea extends Tag {
 		);
 		$content = array_map( 'strval', $content );
 		$content = implode( "\n", $content );
-		parent::__construct( $attributes, array( esc_textarea( $content ) ), 'textarea', false );
+		parent::__construct( $attributes, array( esc_textarea( $content ) ), 'textarea' );
 	}
 
 }

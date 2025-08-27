@@ -18,39 +18,39 @@ class Tag implements TagInterface {
 	/**
 	 * @var string $tag HTML tag name
 	 */
-	protected $tag;
+	protected string $tag;
 
 	/**
 	 * @var array $attributes Array of HTML attributes where keys are attributes and values are values.
 	 */
-	protected $attributes;
+	protected array $attributes;
 
 	/**
-	 * @var string[]|\SergeLiatko\HTML\Tag[] $content Inner content of the tag as an array of strings or tags.
+	 * @var string[]|Tag[] $content Inner content of the tag as an array of strings or tags.
 	 */
-	protected $content;
+	protected array $content;
 
 	/**
-	 * @var bool $self_closing Flag to indicate the tag is self closing.
+	 * @var bool $self_closing Flag to indicate the tag is self-closing.
 	 */
-	protected $self_closing;
+	protected bool $self_closing;
 
 	/**
 	 * Tag constructor.
 	 *
-	 * @param array                                   $attributes
-	 * @param string|string[]|\SergeLiatko\HTML\Tag[] $content
-	 * @param string                                  $tag
-	 * @param bool                                    $self_closing
+	 * @param array $attributes
+	 * @param string|Tag[]|string[] $content
+	 * @param string $tag
+	 * @param bool $self_closing
 	 */
-	public function __construct( $attributes = array(), $content = array(), $tag = '', $self_closing = false ) {
+	public function __construct( array $attributes = array(), array|string $content = array(), string $tag = '', bool $self_closing = false ) {
 		//set tag
 		$this->setTag( $tag );
-		//force self closing for void tags
+		//force self-closing for void tags
 		if ( in_array( $this->getTag(), $this->getVoidTags() ) ) {
 			$self_closing = true;
 		}
-		//set self closing
+		//set self-closing
 		$this->setSelfClosing( $self_closing );
 		//set attributes
 		$this->setAttributes( $attributes );
@@ -66,18 +66,18 @@ class Tag implements TagInterface {
 	}
 
 	/**
-	 * @param mixed $data
+	 * @param mixed|null $data
 	 *
 	 * @return bool
 	 */
-	protected function isEmpty( $data = null ) {
+	protected function isEmpty( mixed $data = null ): bool {
 		return empty( $data );
 	}
 
 	/**
 	 * @return string The opening tag HTML.
 	 */
-	protected function open() {
+	protected function open(): string {
 		$tag = $this->getTag();
 
 		return sprintf(
@@ -91,19 +91,19 @@ class Tag implements TagInterface {
 	/**
 	 * @return string The closing tag HTML.
 	 */
-	protected function close() {
+	protected function close(): string {
 		return $this->isSelfClosing() ? '' : sprintf( '</%1$s>', $this->getTag() );
 	}
 
 	/**
 	 * @return string Tag inner content HTML.
 	 */
-	protected function content() {
+	protected function content(): string {
 		if ( $this->isEmpty( $content = $this->getContent() ) ) {
 			return '';
 		}
 		array_walk( $content, function ( &$item ) {
-			/** @var \SergeLiatko\HTML\Tag|string $item */
+			/** @var Tag|string $item */
 			$item = ( $item instanceof Tag ) ? $item->toHTML() : $item;
 		} );
 
@@ -113,7 +113,7 @@ class Tag implements TagInterface {
 	/**
 	 * @return string Formatted HTML attributes.
 	 */
-	protected function attributes() {
+	protected function attributes(): string {
 		if ( $this->isEmpty( $attributes = $this->getAttributes() ) ) {
 			return '';
 		}
@@ -127,14 +127,14 @@ class Tag implements TagInterface {
 	/**
 	 * @return string The tag HTML.
 	 */
-	public function toHTML() {
+	public function toHTML(): string {
 		return join( '', array( $this->open(), $this->content(), $this->close() ) );
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getTag() {
+	public function getTag(): string {
 		return $this->tag;
 	}
 
@@ -143,7 +143,7 @@ class Tag implements TagInterface {
 	 *
 	 * @return Tag
 	 */
-	public function setTag( $tag ) {
+	public function setTag( string $tag ): static {
 		$this->tag = strtolower( $tag );
 
 		return $this;
@@ -152,7 +152,7 @@ class Tag implements TagInterface {
 	/**
 	 * @return array
 	 */
-	public function getAttributes() {
+	public function getAttributes(): array {
 		return $this->attributes;
 	}
 
@@ -161,30 +161,30 @@ class Tag implements TagInterface {
 	 *
 	 * @return Tag
 	 */
-	public function setAttributes( array $attributes ) {
+	public function setAttributes( array $attributes ): static {
 		$this->attributes = $attributes;
 
 		return $this;
 	}
 
 	/**
-	 * @return \SergeLiatko\HTML\Tag[]|string[]
+	 * @return Tag[]|string[]
 	 */
-	public function getContent() {
+	public function getContent(): array {
 		return $this->content;
 	}
 
 	/**
-	 * @param \SergeLiatko\HTML\Tag[]|string[] $content
+	 * @param Tag[]|string[] $content
 	 *
 	 * @return Tag
 	 */
-	public function setContent( $content ) {
-		if ( !is_array( $content ) ) {
+	public function setContent( array|string $content ): static {
+		if ( ! is_array( $content ) ) {
 			$content = array( $content );
 		}
 		$this->content = array_filter( $content, function ( $item ) {
-			return ! !( is_string( $item ) || ( $item instanceof Tag ) );
+			return ! ! ( is_string( $item ) || ( $item instanceof Tag ) );
 		} );
 
 		return $this;
@@ -193,7 +193,7 @@ class Tag implements TagInterface {
 	/**
 	 * @return bool
 	 */
-	public function isSelfClosing() {
+	public function isSelfClosing(): bool {
 		return $this->self_closing;
 	}
 
@@ -202,8 +202,8 @@ class Tag implements TagInterface {
 	 *
 	 * @return Tag
 	 */
-	public function setSelfClosing( $self_closing ) {
-		$this->self_closing = !empty( $self_closing );
+	public function setSelfClosing( bool $self_closing ): static {
+		$this->self_closing = ! empty( $self_closing );
 
 		return $this;
 	}
@@ -211,7 +211,7 @@ class Tag implements TagInterface {
 	/**
 	 * @return array
 	 */
-	public function getVoidTags() {
+	public function getVoidTags(): array {
 		return array(
 			"area",
 			"base",

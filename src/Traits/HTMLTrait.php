@@ -3,6 +3,8 @@
 
 namespace SergeLiatko\HTML\Traits;
 
+use SergeLiatko\HTML\Tag;
+
 /**
  * Trait HTMLTrait
  *
@@ -11,14 +13,14 @@ namespace SergeLiatko\HTML\Traits;
 trait HTMLTrait {
 
 	/**
-	 * @param array                            $attributes
-	 * @param string[]|\SergeLiatko\HTML\Tag[] $content
-	 * @param string                           $tag
-	 * @param bool                             $self_closing
+	 * @param array $attributes
+	 * @param Tag[]|string[] $content
+	 * @param string $tag
+	 * @param bool $self_closing
 	 *
 	 * @return string
 	 */
-	public static function HTML( $attributes = array(), $content = array(), $tag = '', $self_closing = false ) {
+	public static function HTML( array $attributes = array(), array $content = array(), string $tag = '', bool $self_closing = false ): string {
 		$instance = new self( $attributes, $content, $tag, $self_closing );
 
 		return $instance->toHTML();

@@ -16,11 +16,11 @@ class Ul extends Tag {
 	/**
 	 * Ul constructor.
 	 *
-	 * @param array                                   $attributes
-	 * @param string|string[]|\SergeLiatko\HTML\Tag[] $content
+	 * @param array $attributes
+	 * @param string|string[]|Tag[] $content
 	 */
-	public function __construct( $attributes = array(), $content = array() ) {
-		parent::__construct( $attributes, $content, 'ul', false );
+	public function __construct( array $attributes = array(), $content = array() ) {
+		parent::__construct( $attributes, $content, 'ul' );
 	}
 
 }

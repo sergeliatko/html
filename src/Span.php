@@ -17,11 +17,11 @@ class Span extends Tag {
 	/**
 	 * Span constructor.
 	 *
-	 * @param array                            $attributes
-	 * @param \SergeLiatko\HTML\Tag[]|string[] $content
+	 * @param array $attributes
+	 * @param string|Tag[]|string[] $content
 	 */
-	public function __construct( $attributes = array(), $content = array() ) {
-		parent::__construct( $attributes, $content, 'span', false );
+	public function __construct( array $attributes = array(), $content = array() ) {
+		parent::__construct( $attributes, $content, 'span' );
 	}
 
 }

@@ -17,11 +17,11 @@ class Tbody extends Tag {
 	/**
 	 * Tbody constructor.
 	 *
-	 * @param string[]                  $attributes
+	 * @param string[] $attributes
 	 * @param string|string[]|Tag|Tag[] $content
 	 */
-	public function __construct( $attributes = array(), $content = array() ) {
-		parent::__construct( $attributes, $content, 'tbody', false );
+	public function __construct( array $attributes = array(), $content = array() ) {
+		parent::__construct( $attributes, $content, 'tbody' );
 	}
 
 }

@@ -18,11 +18,11 @@ class Table extends Tag {
 	/**
 	 * Table constructor.
 	 *
-	 * @param string[]                  $attributes
+	 * @param string[] $attributes
 	 * @param string|string[]|Tag|Tag[] $content
 	 */
 	public function __construct( $attributes = array(), $content = array() ) {
-		parent::__construct( $attributes, $content, 'table', false );
+		parent::__construct( $attributes, $content, 'table' );
 	}
 
 }

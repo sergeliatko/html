@@ -20,7 +20,7 @@ class Br extends Tag {
 	 *
 	 * @param array $attributes
 	 */
-	public function __construct( $attributes = array() ) {
+	public function __construct( array $attributes = array() ) {
 		parent::__construct( $attributes, '', 'br', true );
 	}
 
