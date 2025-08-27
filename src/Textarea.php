@@ -20,7 +20,7 @@ class Textarea extends Tag {
 	 * @param array $attributes
 	 * @param string|Tag[]|string[] $content
 	 */
-	public function __construct( array $attributes = array(), $content = array() ) {
+	public function __construct( array $attributes = array(), string|array $content = array() ) {
 		if ( ! is_array( $content ) ) {
 			$content = array( $content );
 		}

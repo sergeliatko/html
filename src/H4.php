@@ -20,7 +20,7 @@ class H4 extends Tag {
 	 * @param array $attributes
 	 * @param string|string[]|Tag[] $content
 	 */
-	public function __construct( array $attributes = array(), $content = array() ) {
+	public function __construct( array $attributes = array(), string|array $content = array() ) {
 		parent::__construct( $attributes, $content, 'h4' );
 	}
 

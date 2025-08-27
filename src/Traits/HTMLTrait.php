@@ -20,7 +20,7 @@ trait HTMLTrait {
 	 *
 	 * @return string
 	 */
-	public static function HTML( array $attributes = array(), array $content = array(), string $tag = '', bool $self_closing = false ): string {
+	public static function HTML( array $attributes = array(), string|array $content = array(), string $tag = '', bool $self_closing = false ): string {
 		$instance = new self( $attributes, $content, $tag, $self_closing );
 
 		return $instance->toHTML();

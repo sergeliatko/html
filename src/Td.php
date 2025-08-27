@@ -20,7 +20,7 @@ class Td extends Tag {
 	 * @param string[] $attributes
 	 * @param string|string[]|Tag|Tag[] $content
 	 */
-	public function __construct( $attributes = array(), $content = array() ) {
+	public function __construct( $attributes = array(), string|array $content = array() ) {
 		parent::__construct( $attributes, $content, 'td' );
 	}
 
